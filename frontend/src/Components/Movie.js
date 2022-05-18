@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Movie({movie}) {
+export default function Movie({movie, setMoviedata}) {
 
-  const movieData = {movie}
+  // const movieData = {movie}
 
   const handleSelectedMovie = () => {
-    console.log(movieData)
+    setMoviedata(movie.id)
+    // console.log(movieData)
   }
 
 
@@ -16,11 +17,11 @@ export default function Movie({movie}) {
     <div className='movie'>
         <img className='movie_thumbnail' src={movie.thumbnail} />
         <div className='movie_text'>
-          <h5>{movie.title}</h5>
+          <h6>{movie.title}</h6>
           <p>{movie.releaseDate}</p>
         </div>
         <Link to="/MovieDetail">
-          <button className='movie_button' onClick={handleSelectedMovie} > Détails</button>
+          <button className='btn btn-primary' onClick={handleSelectedMovie} > Détails</button>
           </Link>
     </div>
   )

@@ -20,8 +20,8 @@ export default function Auth({setLocalUser, needsLogin, setNeedsLogin}) {
     }
 
     return (
-        <>
-            <form className='mx-auto' style={{maxWidth: '350px'}} onSubmit={handleSubmit}>
+        <section className='mx-auto' style={{maxWidth: '350px'}}>
+            <form  onSubmit={handleSubmit}>
                 <h2 className='mb-3 text-center'>{needsLogin ? 'Connectez-vous' : 'Inscrivez-vous'}</h2>
                 <div className="form-floating mb-3">
                     <input type="text" className="form-control" id="floatingInput"
@@ -34,9 +34,10 @@ export default function Auth({setLocalUser, needsLogin, setNeedsLogin}) {
                     <label htmlFor="floatingPassword">Password</label>
                 </div>
                 <button type='submit' className='btn btn-primary w-100'>{needsLogin ? 'Se connecter' : "S'inscrire"}</button>
-                <button className='btn btn-warning mt-3 w-100'
-                        onClick={() => setNeedsLogin(!needsLogin)}>{needsLogin ? "Je n'ai pas de compte" : "J'ai déjà un compte"}</button>
+                
             </form>
-        </>
+            <button className='btn btn-warning mt-3' style={{maxWidth: '350px', width:'350px'}}
+                        onClick={() => setNeedsLogin(!needsLogin)}>{needsLogin ? "Je n'ai pas de compte" : "J'ai déjà un compte"}</button>
+        </section>
     )
 }

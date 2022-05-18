@@ -10,13 +10,17 @@ export const StyledButton = styled.button`
   padding 0.25em 1em;
 `
 
+// const handleRandomMovie = () => {
+
+// }
+
 function Home() {
   return (
     <div className="jumbotron ">
         <div className="container">
           <h1 className="display-3">Bienvenue sur IMDBis</h1>
           <p>IMDBis est un site vous permettant de donner votre avis inintéressant sur des films intéressants. </p>
-          <p><a className="btn btn-primary btn-lg" href="#" role="button">Propose-moi un film</a></p>
+          {/* <p><a className="btn btn-primary btn-lg" href="#" role="button" onClick={handleRandomMovie}>Propose-moi un film</a></p> */}
           {/* <StyledButton>Hello</StyledButton> */}
         </div>
       </div>

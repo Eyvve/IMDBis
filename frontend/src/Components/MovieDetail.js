@@ -1,8 +1,24 @@
 import React from 'react'
+import useGetMovieDetails from '../Hooks/useGetMovieDetails'
 
-function MovieDetail() {
+import { useState, useEffect } from 'react';
+
+function MovieDetail({moviedata}) {
+
+  const [currentMovieDetails, setCurrentMovieDetails] = useState();
+
+  const getMovieDetails = useGetMovieDetails()
+
+  useEffect(() => {
+    getMovieDetails()
+        .then(data => {
+            console.log(data)
+            setCurrentMovieDetails(data)
+        })
+}, [])
+
   return (
-    <div>MovieDetail</div>
+    <div>{moviedata}</div>
   )
 }
 

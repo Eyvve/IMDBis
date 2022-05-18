@@ -23,6 +23,7 @@ function App() {
   })
   const [localUser, setLocalUser] = useState({password: "", username: ""})
   const [needsLogin, setNeedsLogin] = useState(true)
+  const [moviedata, setMoviedata] = useState();
 
   console.log(localUser)
 
@@ -86,24 +87,24 @@ function App() {
          <nav class="navbar navbar-expand-lg bg-light">
           <div class="container-fluid">
             <Link className='navbar-brand' to="/">IMDbis</Link>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <Link className='nav-link' to="/allMovies">Tous les films</Link>
                 <Link className='nav-link' to="/" onClick={handleDisconnect} >Se déconnecter</Link>
               </div>
             </div>
+            <div class="navbar-nav">
+                <div className='align-middle pr-3'>Bonjour {loggedUser.username}</div>
+              </div>
           </div>
         </nav>
       </HideIfNotLogged>
       <div className='container'>
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/allMovies" element={<AllMovies />} />
+          <Route path="/allMovies" element={<AllMovies setMoviedata={setMoviedata} />} />
           <Route path="/auth" element={<Auth setLocalUser={setLocalUser} needsLogin={needsLogin} setNeedsLogin={setNeedsLogin}  />} />
-          <Route path="/movieDetail" element={<MovieDetail />} />
+          <Route path="/movieDetail" element={<MovieDetail moviedata={moviedata} />} />
         </Routes>
       </div>
     </BrowserRouter>

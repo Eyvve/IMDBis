@@ -4,7 +4,7 @@ import useGetMovieList from '../Hooks/useGetMovieList';
 import Movies from './Movies'
 import './movieStyle.css'
 
-function AllMovies() {
+function AllMovies({setMoviedata}) {
 
     const [movielist, setMovielist] = useState([]);
 
@@ -19,7 +19,7 @@ function AllMovies() {
     }, [])
 
   return (
-    <div><Movies movielist={movielist} /></div>
+    <div><Movies movielist={movielist} setMoviedata={setMoviedata} /></div>
   )
 }
 

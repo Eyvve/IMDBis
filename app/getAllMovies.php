@@ -2,7 +2,7 @@
 
 require_once 'fuckCors.php';
 require_once 'Classes/PDOFactory.php';
-require_once 'Classes/Movie.php';
+// require_once 'Classes/Movie.php';
 
 $pdo = (new PDOFactory())->getPdo();
 
