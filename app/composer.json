@@ -1,0 +1,17 @@
+{
+    "name": "dcano/app",
+    "autoload": {
+        "psr-4": {
+            "Dcano\\App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dorian Canonne",
+            "email": "dorian.canonne@novanexx.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.2"
+    }
+}

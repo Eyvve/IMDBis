@@ -1,0 +1,35 @@
+.allmovies{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.movie{
+    width: 300px;
+    height: 400px;
+    background-color: #303030;
+    padding: 25px;
+    margin: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    color: #EEE;
+}
+
+.movie_thumbnail{
+    /* width: 60%; */
+    height: 200px;
+    align-self: center;
+    margin: 15px;
+}
+
+.movie_text{
+    height: 250px;
+}
+
+.movie_button{
+    align-self: end;
+    justify-self: flex-end;
+}
