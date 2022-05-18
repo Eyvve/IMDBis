@@ -5,10 +5,13 @@ import AllMovies from './Components/AllMovies';
 import Home from './Components/Home';
 import Auth from './Components/Auth';
 import MovieDetail from './Components/MovieDetail';
+import HideIfLogged from './Components/HideIfLogged';
+import HideIfNotLogged from './Components/HideIfNotLogged';
 
 import useGetCookies from "./Hooks/useGetCookie";
 import useLogin from "./Hooks/useLogin";
 import useRegister from "./Hooks/useRegister";
+import useEraseCookie from "./Hooks/useEraseCookie"
 
 
 function App() {
@@ -26,7 +29,7 @@ function App() {
   const login = useLogin();
     const register = useRegister();
     const cookies = useGetCookies();
-    // const eraseCookie = useEraseCookie();
+    const eraseCookie = useEraseCookie();
 
     useEffect(() => {
         if (Object.keys(cookies).includes('hetic_token') && Object.keys(cookies).includes('hetic_username')) {
@@ -51,22 +54,50 @@ function App() {
         }
     }, [localUser])
 
+    const handleDisconnect = () => {
+      setLocalUser({
+        status: 'error',
+        token: "",
+        username: ""
+      });
+      eraseCookie();
+      window.location.reload(false);
+    }
+
   return (
     <BrowserRouter>
-      <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <Link className='navbar-brand' to="/">IMDbis</Link>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <Link className='nav-link' to="/allMovies">Tous les films</Link>
-              <Link className='nav-link' to="/auth" >Se connecter / s'inscrire</Link>
+      <HideIfLogged loggedUser={loggedUser}>
+        <nav class="navbar navbar-expand-lg bg-light">
+          <div class="container-fluid">
+            <Link className='navbar-brand' to="/">IMDbis</Link>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <Link className='nav-link' to="/allMovies">Tous les films</Link>
+                <Link className='nav-link' to="/auth" >Se connecter / s'inscrire</Link>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </HideIfLogged>
+      <HideIfNotLogged loggedUser={loggedUser}>
+         <nav class="navbar navbar-expand-lg bg-light">
+          <div class="container-fluid">
+            <Link className='navbar-brand' to="/">IMDbis</Link>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <Link className='nav-link' to="/allMovies">Tous les films</Link>
+                <Link className='nav-link' to="/" onClick={handleDisconnect} >Se déconnecter</Link>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </HideIfNotLogged>
       <div className='container'>
         <Routes>
           <Route path="/" element={<Home />}/>
