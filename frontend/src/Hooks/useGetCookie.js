@@ -1,6 +1,3 @@
-// import {CookieInterface} from "../Interface/CookieInterface";
-
-
 export default function useGetCookie() {
     let cookies = {};
 

@@ -25,9 +25,9 @@ function App() {
   const [localUser, setLocalUser] = useState({password: "", username: ""})
   const [needsLogin, setNeedsLogin] = useState(true)
   const [moviedata, setMoviedata] = useState();
-  console.log(moviedata)
+  // console.log(moviedata)
 
-  console.log(localUser)
+  // console.log(localUser)
 
   const login = useLogin();
     const register = useRegister();
@@ -106,7 +106,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/allMovies" element={<AllMovies setMoviedata={setMoviedata} />} />
           <Route path="/auth" element={<Auth setLocalUser={setLocalUser} needsLogin={needsLogin} setNeedsLogin={setNeedsLogin}  />} />
-          <Route path="/movieDetail" element={<MovieDetail moviedata={moviedata} />} />
+          <Route path="/movieDetail" element={<MovieDetail moviedata={moviedata} loggedUser={loggedUser} />} />
         </Routes>
       </div>
     </BrowserRouter>

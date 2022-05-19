@@ -1,7 +1,7 @@
 import React from 'react'
 import MovieComments from './MovieComments'
 
-function MovieDetail({moviedata}) {
+function MovieDetail({moviedata, loggedUser}) {
 
   return (
         <>
@@ -11,7 +11,7 @@ function MovieDetail({moviedata}) {
             <h3>{moviedata.releaseDate}</h3> 
             <p>{moviedata.description}</p> 
           </div>
-          <MovieComments movie={moviedata} />
+          <MovieComments movie={moviedata} loggedUser={loggedUser} />
         </>
   )
 }

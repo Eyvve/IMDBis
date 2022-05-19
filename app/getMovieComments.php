@@ -12,7 +12,7 @@ $pdo = (new PDOFactory())->getPdo();
 
 $movieId = $_GET["movieId"];
 
-$query = $pdo->query('SELECT comment.id, comment.userId, comment.movieId, comment.content, user.username, movie.id FROM comment INNER JOIN user ON comment.userId = user.id INNER JOIN movie ON comment.movieId = movie.id WHERE movieId = ' . $movieId . '');
+$query = $pdo->query('SELECT comment.id as commentId, comment.userId, comment.movieId, comment.content, user.username, movie.id FROM comment INNER JOIN user ON comment.userId = user.id INNER JOIN movie ON comment.movieId = movie.id WHERE movieId = ' . $movieId . '');
 // $query = $pdo->query('SELECT comment.id, comment.userId, comment.movieId, comment.content, user.username, movie.id FROM comment INNER JOIN user ON comment.userId = user.id INNER JOIN movie ON comment.movieId = movie.id WHERE movieId = 3');
 
 
@@ -25,8 +25,8 @@ $res = [];
 
 foreach ($query->fetchAll() as $comment) {
     $res[] = [
-        'id' => $comment['id'],
-        'movie' => $comment['movie'],
+        'id' => $comment['commentId'],
+        'movie' => $comment['movieId'],
         "username" => $comment['username'],
         'content' => $comment['content']
     ];
