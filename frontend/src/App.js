@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Components/movieStyle.css'
 import { useState, useEffect } from 'react';
 import {Routes, Link, Route, BrowserRouter} from 'react-router-dom'
 import AllMovies from './Components/AllMovies';
@@ -24,6 +25,7 @@ function App() {
   const [localUser, setLocalUser] = useState({password: "", username: ""})
   const [needsLogin, setNeedsLogin] = useState(true)
   const [moviedata, setMoviedata] = useState();
+  console.log(moviedata)
 
   console.log(localUser)
 

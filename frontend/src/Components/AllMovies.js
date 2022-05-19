@@ -2,7 +2,6 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import useGetMovieList from '../Hooks/useGetMovieList';
 import Movies from './Movies'
-import './movieStyle.css'
 
 function AllMovies({setMoviedata}) {
 

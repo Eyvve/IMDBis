@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 
 export default function Movie({movie, setMoviedata}) {
 
-  // const movieData = {movie}
+  const movieData = {movie}
 
   const handleSelectedMovie = () => {
-    setMoviedata(movie.id)
-    // console.log(movieData)
+    setMoviedata(movie)
+    console.log(movieData)
   }
 
 
