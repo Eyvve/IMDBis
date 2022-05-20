@@ -1,6 +1,12 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Salut JF, j'ai fait ce que j'ai pu, mais dans cet app, tu retrouveras :
+
+- un systeme de login / register géré avec des states
+- un logout avec Redux
+- une liste de films
+- des commentaires pour chacun de ces films
+- la possibilité de commenter si t'es connecté
 
 ## Available Scripts
 
