@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mer. 18 mai 2022 à 14:30
+-- Généré le : ven. 20 mai 2022 à 15:59
 -- Version du serveur : 10.7.3-MariaDB-1:10.7.3+maria~focal
 -- Version de PHP : 8.0.19
 
@@ -39,7 +39,21 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `userId`, `movieId`, `content`) VALUES
-(1, 3, 3, 'J\'ai adoré, j\'adorerais aussi une place au gouvernement, n\'importe ou, s\'il vous plait.');
+(2, 6, 7, 'Ce film est une merveille, mieux que l\'original'),
+(3, 6, 1, 'Une pépite d\'absurdité'),
+(4, 6, 2, 'pas vu'),
+(5, 6, 4, 'Inconnu et vraiment bon, en vrai aucune idée je suis 100% subjectif là'),
+(6, 6, 5, 'c\'est nuuuuuuuuuuuuuuuuuuuuuuuuuul'),
+(7, 6, 6, 'Meilleur film du MCU'),
+(8, 6, 8, 'badant mais bien'),
+(9, 6, 3, 'Très bon film'),
+(10, 6, 6, 'waw trop bien ce film'),
+(11, 10, 1, 'Trop bien'),
+(12, 10, 7, 'GOTTA GO FAST'),
+(13, 10, 6, 'Je suis d\'accord avec GigaChad'),
+(14, 10, 5, 'bouuuuuuuuh'),
+(15, 10, 8, 'T-T\n'),
+(16, 6, 1, 'hehe');
 
 -- --------------------------------------------------------
 
@@ -86,14 +100,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'JeanRobert', 'JeanRobert12345'),
-(2, 'JeanPierrePolnareff', 'SILVERCHARIOT'),
-(3, 'ManuelValls', 'ManouelValls'),
-(5, 'dorian.canonne@novanexx.com', '$2y$10$Vx2H6wq.ybklO5f1fJNTTuW6q4iKlSgORW0sCvu6iZRbxS0bal5GW'),
 (6, 'GigaChad', '$2y$10$JCYBfEUWohf9G7alkt19iu/lWeMT1BdpNa7k0JmAE2I3q58O851xG'),
-(7, 'test', '$2y$10$/LoAxg7N0PqoNz3l19/YAugAonkEYUjBHKzRyvtm/Un8AhmljTw1C'),
-(8, 'dorian', '$2y$10$B95wD7l0.//4khC7o5ojceQL2sC9ezP.B/q.D7pj13ppMrRrGsE5K'),
-(9, 'qzdqzd', '$2y$10$.DMkUmfpSceOaWxfYfnXiur8dYHLlOefNJl8uaJWMkikPP4Vnl.06');
+(10, 'dorian', '$2y$10$k9.CSlN50mSSKXRXJcdxM.QlTRfNiVAUGQT3DO84fTED01VYiv.q.');
 
 --
 -- Index pour les tables déchargées
@@ -125,7 +133,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `movie`
@@ -137,7 +145,7 @@ ALTER TABLE `movie`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

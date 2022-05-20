@@ -4,7 +4,6 @@ require_once './vendor/autoload.php';
 require_once 'FuckCors.php';
 require_once 'Classes/PDOFactory.php';
 require_once 'Classes/TokenHelper.php';
-require_once 'Classes/User.php';
 require_once 'Classes/CookieHelper.php';
 
 $username = $_REQUEST['username'] ?? '';
@@ -38,7 +37,6 @@ if ($userAlreadyExists) {
 $insert = $pdo->prepare('INSERT INTO user (`username`, `password`) VALUES (:username, :password)');
 $insert->bindValue('username', $username, PDO::PARAM_STR);
 $insert->bindValue('password', password_hash($password, PASSWORD_BCRYPT), PDO::PARAM_STR);
-// $insert->bindValue('token', TokenHelper::buildToken(), PDO::PARAM_STR);
 
 if ($insert->execute()) {
     $lastInsertId = $pdo->lastInsertId();
