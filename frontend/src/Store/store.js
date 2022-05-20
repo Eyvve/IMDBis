@@ -1,6 +1,6 @@
 
 import { createStore } from '@reduxjs/toolkit';
 
-import LogOutReducer from '../Reducers/AuthReducer';
+import AuthReducer from '../Reducers/AuthReducer';
 
   export const store = createStore(AuthReducer)
