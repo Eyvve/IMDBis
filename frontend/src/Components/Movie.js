@@ -22,7 +22,7 @@ export default function Movie({movie, setMoviedata}) {
         </div>
         <Link to="/MovieDetail">
           <button className='btn btn-primary' onClick={handleSelectedMovie} > Détails</button>
-          </Link>
+        </Link>
     </div>
   )
 }

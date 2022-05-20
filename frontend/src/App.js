@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Components/movieStyle.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import {Routes, Link, Route, BrowserRouter} from 'react-router-dom'
 import AllMovies from './Components/AllMovies';
 import Home from './Components/Home';
@@ -12,10 +12,14 @@ import HideIfNotLogged from './Components/HideIfNotLogged';
 import useGetCookies from "./Hooks/useGetCookie";
 import useLogin from "./Hooks/useLogin";
 import useRegister from "./Hooks/useRegister";
-import useEraseCookie from "./Hooks/useEraseCookie"
+import { useDispatch, useSelector } from 'react-redux';
+
+
 
 
 function App() {
+
+  
 
   const [loggedUser, setLoggedUser] = useState({
     status: 'error',
@@ -25,14 +29,15 @@ function App() {
   const [localUser, setLocalUser] = useState({password: "", username: ""})
   const [needsLogin, setNeedsLogin] = useState(true)
   const [moviedata, setMoviedata] = useState();
-  // console.log(moviedata)
 
-  // console.log(localUser)
+  const dispatch = useDispatch()
+
+  const authSelector = useSelector(state=>state)
+
 
   const login = useLogin();
     const register = useRegister();
     const cookies = useGetCookies();
-    const eraseCookie = useEraseCookie();
 
     useEffect(() => {
         if (Object.keys(cookies).includes('hetic_token') && Object.keys(cookies).includes('hetic_username')) {
@@ -58,16 +63,13 @@ function App() {
     }, [localUser])
 
     const handleDisconnect = () => {
-      setLocalUser({
-        status: 'error',
-        token: "",
-        username: ""
-      });
-      eraseCookie();
+      dispatch({type: 'LOGOUT'})
+      setLocalUser(authSelector)
       window.location.reload(false);
     }
 
   return (
+    
     <BrowserRouter>
       <HideIfLogged loggedUser={loggedUser}>
         <nav class="navbar navbar-expand-lg bg-light">

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import HideIfNotLogged from './HideIfNotLogged';
+import HideIfLogged from "./HideIfLogged"
 import usePostComment from '../Hooks/usePostComment';
 
 function CommentForm({loggedUser, setNeedsCommentUpdate, currentMovieId}) {
@@ -31,25 +32,30 @@ function CommentForm({loggedUser, setNeedsCommentUpdate, currentMovieId}) {
     }  
 
     return (
-        <HideIfNotLogged loggedUser={loggedUser}>
-        <form className='mb-5' onSubmit={handleSubmit}>
-            <div className="form-group">
-                <textarea 
-                    className="form-control" 
-                    placeholder='Mon Avis sur ce film' 
-                    id="floatingTextarea" 
-                    name='content' 
-                    onChange={handleChange} 
-                    value={localComment.content} 
-                    rows="3"
-                ></textarea>
+        <>
+            <HideIfLogged  loggedUser={loggedUser}>
+                <h6>Veuillez vous connecter pour donner votre avis</h6>
+            </HideIfLogged>
+            <HideIfNotLogged loggedUser={loggedUser}>
+            <form className='mb-5' onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <textarea 
+                        className="form-control" 
+                        placeholder='Mon Avis sur ce film' 
+                        id="floatingTextarea" 
+                        name='content' 
+                        onChange={handleChange} 
+                        value={localComment.content} 
+                        rows="3"
+                    ></textarea>
 
-                <button type='submit' className='btn btn-primary w-100'>
-                    soumettre son avis inintéressant
-                </button>
-            </div>
-        </form>
-        </ HideIfNotLogged>
+                    <button type='submit' className='btn btn-primary w-100'>
+                        soumettre son avis inintéressant
+                    </button>
+                </div>
+            </form>
+            </ HideIfNotLogged>
+        </>
     )
 }
 
